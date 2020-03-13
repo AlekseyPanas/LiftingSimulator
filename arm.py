@@ -32,9 +32,9 @@ class Arm:
         pygame.draw.line(screen, (255, 255, 255), self.anchor_point, self.joint_point, 3)
         pygame.draw.line(screen, (255, 255, 255), self.joint_point, self.touch, 3)
 
-        pygame.draw.circle(screen, (50, 255, 50), self.anchor_point, 10, 3)
-        pygame.draw.circle(screen, (255, 50, 50), self.joint_point, 10, 3)
-        pygame.draw.circle(screen, (255, 50, 50), self.touch, 10, 3)
+        #pygame.draw.circle(screen, (50, 255, 50), self.anchor_point, 10, 3)
+        #pygame.draw.circle(screen, (255, 50, 50), self.joint_point, 10, 3)
+        pygame.draw.circle(screen, (255, 255, 255), self.touch, 10, 3)
 
         #pygame.draw.circle(screen, (50, 50, 255), self.point_test, 10, 3)
 

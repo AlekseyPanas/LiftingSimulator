@@ -25,6 +25,10 @@ class game:
         screen.blit(globe.barbell_bar_image, ((globe.SCREEN_SIZE[0] / 2) - (globe.barbell_bar_image.get_width() / 2),
                                               self.rightArm.touch[1] - 5))
 
+        # Draw circles at arm reach positions (UNCOMMENT FOR DEBUG)
+        #pygame.draw.circle(screen, (0, 0, 255), (int(self.rightArm.anchor_point[0] + globe.BARBELL_GRAB_SHIFT), int(self.height)), 5)
+        #pygame.draw.circle(screen, (0, 0, 255), (int(self.leftArm.anchor_point[0] - globe.BARBELL_GRAB_SHIFT), int(self.height)), 5)
+
     def update(self):
         # Tests for events
         for event in pygame.event.get():
@@ -38,10 +42,12 @@ class game:
                     self.velocity += .03
 
         # Updates arm touch positions according height
-        if pygame.mouse.get_pos()[1] < self.rightArm.anchor_point[1]:
-            self.rightArm.update_touch((self.rightArm.anchor_point[0] + globe.BARBELL_GRAB_SHIFT, self.height))
+        if self.height > self.rightArm.anchor_point[1]:
+            self.height = self.rightArm.anchor_point[1]
 
-            self.leftArm.update_touch((self.leftArm.anchor_point[0] - globe.BARBELL_GRAB_SHIFT, self.height))
+        self.rightArm.update_touch((self.rightArm.anchor_point[0] + globe.BARBELL_GRAB_SHIFT, self.height))
+
+        self.leftArm.update_touch((self.leftArm.anchor_point[0] - globe.BARBELL_GRAB_SHIFT, self.height))
 
         # Updates velocity
         if self.height > self.rightArm.anchor_point[1] - (self.rightArm.length * 2):
