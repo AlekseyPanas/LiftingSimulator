@@ -51,7 +51,7 @@ class game:
 
         # Updates velocity
         if self.height > self.rightArm.anchor_point[1] - (self.rightArm.length * 2):
-            self.velocity += .001
+            self.velocity += .005
         else:
             self.velocity += .01
 
